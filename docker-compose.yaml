@@ -52,7 +52,7 @@ x-airflow-common:
   image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:3.1.8}
   # build: .
   env_file:
-    - ${ENV_FILE_PATH:-config/.env}
+    - ${ENV_FILE_PATH:-.env}
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
@@ -123,7 +123,7 @@ services:
     <<: *airflow-common
     command: api-server
     ports:
-      - "8080:8080"
+      - "${AIRFLOW_PORT:-8080}:8080"
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/api/v2/monitor/health"]
       interval: 30s
