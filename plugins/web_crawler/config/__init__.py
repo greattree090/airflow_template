@@ -17,11 +17,14 @@ def load_env(env_file: Path | None = None) -> None:
         env_file: .env 파일 경로. None이면 프로젝트 루트 .env를 사용한다.
     """
     global _env_loaded
+
     if _env_loaded:
         return
+    
     _env_loaded = True
 
     target = env_file or _default_env_file()
+    
     if not target.is_file():
         return
 

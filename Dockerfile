@@ -28,9 +28,25 @@ USER airflow
 
 # [Step 6] 핵심 수정: pyproject.toml을 직접 빌드하지 않고, lock 파일 기반으로 패키지만 설치
 # --frozen을 사용하기 위해 uv pip install -r <(uv export) 형태를 쓰고 싶지만, 
-# 가장 단순하고 확실한 방법인 uv.lock 기반 설치를 진행합니다.
+# uv 설치 문제로 requirements.txt를 사용.
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" -r requirements.txt
+RUN pip check
 
-# [Step 7] Playwright 브라우저 설치
-RUN playwright install chromium
+
+# [Step 7] Playwright 브라우저 
+RUN pip install playwright
+
+# ⚠️ 중요: playwright 시스템 의존성을 root로 설치
+USER root
+RUN python -m playwright install-deps chromium
+
+# 캐시 정리
+RUN apt-get clean && rm -rf /root/.cache/pip
+
+# ⚠️ 중요: airflow 유저로 다시 전환 후 브라우저 설치
+USER airflow
+RUN python -m playwright install chromium
+
+# 최종적으로 airflow 유저로 전환
+USER airflow

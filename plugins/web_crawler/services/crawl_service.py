@@ -51,7 +51,18 @@ class CrawlService:
         return results.to_dict()
 
     def export(self, results_dict: dict, output_dir: Path) -> dict[str, str]:
-        """dict를 CSV로 저장하고 파일 경로 dict를 반환한다."""
+        """dict를 CSV로 저장하고 파일 경로 dict를 반환한다.
+
+        Returns:
+            콘텐츠 종류를 키, 저장된 CSV 파일의 절대 경로 문자열을 값으로 하는 dict.
+            예시::
+
+                {
+                    "smartblock": "/opt/airflow/output/smartblock.csv",
+                    "cafe": "/opt/airflow/output/cafe.csv",
+                    "blog": "/opt/airflow/output/blog.csv",
+                }
+        """
 
         results = SearchResultsBundle.from_dict(results_dict)
 
