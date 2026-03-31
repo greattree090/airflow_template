@@ -103,6 +103,10 @@ babel==2.18.0 \
     --hash=sha256:b80b99a14bd085fcacfa15c9165f651fbb3406e66cc603abf11c5750937c992d \
     --hash=sha256:e2b422b277c2b9a9630c1d7903c2a00d0830c409c59ac8cae9081c92f1aeba35
     # via apache-airflow-task-sdk
+beautifulsoup4==4.14.3 \
+    --hash=sha256:0918bfe44902e6ad8d57732ba310582e98da931428d231a5ecb9e7c703a735bb \
+    --hash=sha256:6292b1c5186d356bba669ef9f7f051757099565ad9ada5dd630bd9de5fa7fb86
+    # via airflow-template
 cadwyn==5.4.6 \
     --hash=sha256:2e6165aee2eb4b7a465d2998c4fc406911036bf9dee1d1562eeba39ae647f79f \
     --hash=sha256:6c0611bd58de6b92bd7bb2a2779b5323bb20b29cfacbf0e4f71a0cccaa5b47b8
@@ -355,6 +359,7 @@ greenlet==3.3.2 \
     --hash=sha256:e3cb43ce200f59483eb82949bf1835a99cf43d7571e900d7c8d5c62cdf25d2f9
     # via
     #   greenback
+    #   playwright
     #   sqlalchemy
 grpcio==1.65.5 \
     --hash=sha256:078038e150a897e5e402ed3d57f1d31ebf604cbed80f595bd281b5da40762a92 \
@@ -740,6 +745,16 @@ pendulum==3.2.0 \
     # via
     #   apache-airflow-core
     #   apache-airflow-task-sdk
+playwright==1.58.0 \
+    --hash=sha256:185e0132578733d02802dfddfbbc35f42be23a45ff49ccae5081f25952238117 \
+    --hash=sha256:1e03be090e75a0fabbdaeab65ce17c308c425d879fa48bb1d7986f96bfad0b99 \
+    --hash=sha256:32ffe5c303901a13a0ecab91d1c3f74baf73b84f4bedbb6b935f5bc11cc98e1b \
+    --hash=sha256:70c763694739d28df71ed578b9c8202bb83e8fe8fb9268c04dd13afe36301f71 \
+    --hash=sha256:8f9999948f1ab541d98812de25e3a8c410776aa516d948807140aff797b4bffa \
+    --hash=sha256:96e3204aac292ee639edbfdef6298b4be2ea0a55a16b7068df91adac077cc606 \
+    --hash=sha256:a2bf639d0ce33b3ba38de777e08697b0d8f3dc07ab6802e4ac53fb65e3907af8 \
+    --hash=sha256:c95568ba1eda83812598c1dc9be60b4406dffd60b149bc1536180ad108723d6b
+    # via airflow-template
 pluggy==1.6.0 \
     --hash=sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3 \
     --hash=sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746
@@ -855,6 +870,10 @@ pydantic-core==2.41.5 \
     --hash=sha256:ed2e99c456e3fadd05c991f8f437ef902e00eedf34320ba2b0842bd1c3ca3a75 \
     --hash=sha256:f41a7489d32336dbf2199c8c0a215390a751c5b014c2c1c5366e817202e9cdf7
     # via pydantic
+pyee==13.0.1 \
+    --hash=sha256:0b931f7c14535667ed4c7e0d531716368715e860b988770fc7eb8578d1f67fc8 \
+    --hash=sha256:af2f8fede4171ef667dfded53f96e2ed0d6e6bd7ee3bb46437f77e3b57689228
+    # via playwright
 pygments==2.19.2 \
     --hash=sha256:636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887 \
     --hash=sha256:86540386c03d588bb81d44bc3928634ff26449851e99741617ecb9037ee5ec0b
@@ -971,6 +990,7 @@ requests==2.32.5 \
     --hash=sha256:2462f94637a34fd532264295e186976db0f5d453d1cdd31473c85a6a161affb6 \
     --hash=sha256:dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf
     # via
+    #   airflow-template
     #   apache-airflow-core
     #   opentelemetry-exporter-otlp-proto-http
 rich==13.9.4 \
@@ -1134,6 +1154,10 @@ sniffio==1.3.1 \
     --hash=sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2 \
     --hash=sha256:f4324edc670a0f49750a81b895f35c3adb843cca46f0530f79fc1babb23789dc
     # via greenback
+soupsieve==2.8.3 \
+    --hash=sha256:3267f1eeea4251fb42728b6dfb746edc9acaffc4a45b27e19450b676586e8349 \
+    --hash=sha256:ed64f2ba4eebeab06cc4962affce381647455978ffc1e36bb79a545b91f45a95
+    # via beautifulsoup4
 sqlalchemy==2.0.48 \
     --hash=sha256:07edba08061bc277bfdc772dd2a1a43978f5a45994dd3ede26391b405c15221e \
     --hash=sha256:1182437cb2d97988cfea04cf6cdc0b0bb9c74f4d56ec3d08b81e23d621a28cc6 \
@@ -1234,12 +1258,14 @@ typing-extensions==4.15.0 \
     #   alembic
     #   anyio
     #   apache-airflow-core
+    #   beautifulsoup4
     #   cadwyn
     #   cron-descriptor
     #   fastapi
     #   opentelemetry-sdk
     #   pydantic
     #   pydantic-core
+    #   pyee
     #   referencing
     #   rich-toolkit
     #   sqlalchemy
