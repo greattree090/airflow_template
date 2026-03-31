@@ -124,7 +124,7 @@ class BlogTabContents(TargetContents):
             await page.goto(
                 _build_blog_tab_url(query=keyword, sort_order=self.sort_order),
                 wait_until="domcontentloaded",
-                timeout=50000,
+                timeout=self.timeout_ms,
             )
 
             await page.wait_for_timeout(self.render_wait_ms)
